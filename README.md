@@ -20,7 +20,7 @@ Simple case for greetgo company
      
 ### Как взлететь?
 Всё просто, для этого нужно
-5. Открыть [localhost:9999/greetgo/message/](http://localhost:9999/greetgo/message/)
-6. Не нравится большой, жирный текст? Измени его! для этого вбей в текстовое поле свой текст и нажми на кнопку **Submit**
+1. Открыть [localhost:9999/greetgo/message/](http://localhost:9999/greetgo/message/)
+2. Не нравится большой, жирный текст? Измени его! для этого вбей в текстовое поле свой текст и нажми на кнопку **Submit**
 
 > Засим всё. Больше тут делать нечего :stuck_out_tongue_winking_eye:
