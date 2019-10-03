@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link href="/greetgo/static/css/body.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous">
+    </script>
+</head>
+<body>
+<h1 id="displayBlock"></h1>
+
+<form id="changeMessage" action="#">
+    <div>
+        <label for="message">Новое сообщение *</label>
+        <input id="message" name="message" type="text" class="required">
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>
+<script>
+    jQuery(document).ready(function ($) {
+        $('#changeMessage').submit(function(e) {
+            e.preventDefault();
+            var message = $('#message').val();
+
+            $(".error").remove();
+
+            if (message.length < 1) {
+                $('#message').after('<span class="error">Это поле обязательно для заполнения</span>');
+                return;
+            }
+
+            var data = "{\"id\":" + 1 + ", \"message\":" + JSON.stringify(message) + "}";
+
+            $.ajax({
+                type: "POST",
+                contentType : "application/json",
+                url: "/greetgo/message/set",
+                data : data,
+                dataType : 'json',
+                timeout : 10000,
+                success : function(data) {
+                    console.log("SUCCESS: ", data);
+                    location.reload();
+                },
+                error : function(e) {
+                    console.log("ERROR: ", e);
+                },
+                done : function(e) {
+                    console.log("DONE");
+                }
+            })
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "/greetgo/message/get",
+            timeout : 10000,
+            success : function(data) {
+                console.log("SUCCESS: ", data);
+                $("#displayBlock").text(data.message);
+            },
+            error : function(e) {
+                console.log("ERROR: ", e);
+                alert(e);
+            },
+            done : function(e) {
+                console.log("DONE");
+            }
+        })
+    })
+</script>
+
+</body>
+</html>

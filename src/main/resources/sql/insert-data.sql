@@ -1,0 +1,1 @@
+INSERT INTO Titles VALUES (1, 'Hello world!');

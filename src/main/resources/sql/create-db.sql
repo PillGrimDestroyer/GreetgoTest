@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS Titles (
+  id INTEGER PRIMARY KEY,
+  message VARCHAR(0)
+);
